@@ -1,0 +1,50 @@
+{
+  "vowels": [
+    { "hangeul": "ㅏ", "syllable": "아" },
+    { "hangeul": "ㅓ", "syllable": "어" },
+    { "hangeul": "ㅣ", "syllable": "이" },
+    { "hangeul": "ㅗ", "syllable": "오" },
+    { "hangeul": "ㅜ", "syllable": "우" },
+    { "hangeul": "ㅡ", "syllable": "으" }
+  ],
+  "compoundVowels": [
+    { "hangeul": "ㅐ", "syllable": "애", "baseHangeul": "ㅏ" },
+    { "hangeul": "ㅑ", "syllable": "야", "baseHangeul": "ㅏ" },
+    { "hangeul": "ㅒ", "syllable": "얘", "baseHangeul": "ㅏ" },
+    { "hangeul": "ㅔ", "syllable": "에", "baseHangeul": "ㅓ" },
+    { "hangeul": "ㅕ", "syllable": "여", "baseHangeul": "ㅓ" },
+    { "hangeul": "ㅖ", "syllable": "예", "baseHangeul": "ㅓ" },
+    { "hangeul": "ㅘ", "syllable": "와", "baseHangeul": "ㅗ" },
+    { "hangeul": "ㅙ", "syllable": "왜", "baseHangeul": "ㅗ" },
+    { "hangeul": "ㅚ", "syllable": "외", "baseHangeul": "ㅗ" },
+    { "hangeul": "ㅛ", "syllable": "요", "baseHangeul": "ㅗ" },
+    { "hangeul": "ㅝ", "syllable": "워", "baseHangeul": "ㅜ" },
+    { "hangeul": "ㅞ", "syllable": "웨", "baseHangeul": "ㅜ" },
+    { "hangeul": "ㅟ", "syllable": "위", "baseHangeul": "ㅜ" },
+    { "hangeul": "ㅠ", "syllable": "유", "baseHangeul": "ㅜ" },
+    { "hangeul": "ㅢ", "syllable": "의", "baseHangeul": "ㅡ" }
+  ],
+  "consonants": [
+    { "hangeul": "ㄱ", "syllable": "" },
+    { "hangeul": "ㄴ", "syllable": "" },
+    { "hangeul": "ㄷ", "syllable": "" },
+    { "hangeul": "ㄹ", "syllable": "" },
+    { "hangeul": "ㅁ", "syllable": "" },
+    { "hangeul": "ㅂ", "syllable": "" },
+    { "hangeul": "ㅅ", "syllable": "" },
+    { "hangeul": "ㅇ", "syllable": "" },
+    { "hangeul": "ㅈ", "syllable": "" },
+    { "hangeul": "ㅊ", "syllable": "" },
+    { "hangeul": "ㅋ", "syllable": "" },
+    { "hangeul": "ㅌ", "syllable": "" },
+    { "hangeul": "ㅍ", "syllable": "" },
+    { "hangeul": "ㅎ", "syllable": "" }
+  ],
+  "doubleConsonants": [
+    { "hangeul": "ㄲ", "syllable": "", "baseHangeul": "ㄱ" },
+    { "hangeul": "ㄸ", "syllable": "", "baseHangeul": "ㄷ" },
+    { "hangeul": "ㅃ", "syllable": "", "baseHangeul": "ㅂ" },
+    { "hangeul": "ㅆ", "syllable": "", "baseHangeul": "ㅅ" },
+    { "hangeul": "ㅉ", "syllable": "", "baseHangeul": "ㅈ" }
+  ]
+}
