@@ -1,11 +1,11 @@
 {
   "vowels": [
-    { "hangeul": "ㅏ", "syllable": "아" },
-    { "hangeul": "ㅓ", "syllable": "어" },
-    { "hangeul": "ㅣ", "syllable": "이" },
+    { "hangeul": "ㅡ", "syllable": "으" },
     { "hangeul": "ㅗ", "syllable": "오" },
     { "hangeul": "ㅜ", "syllable": "우" },
-    { "hangeul": "ㅡ", "syllable": "으" }
+    { "hangeul": "ㅣ", "syllable": "이" },
+    { "hangeul": "ㅏ", "syllable": "아" },
+    { "hangeul": "ㅓ", "syllable": "어" }
   ],
   "compoundVowels": [
     { "hangeul": "ㅐ", "syllable": "애", "baseHangeul": "ㅏ" },
