@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^2.0.2",
+    "@vue-player/nuxt": "^0.1.6",
     "nuxt": "^4.5.1",
     "quasar": "^2.23.5",
     "vue": "^3.5.40",
