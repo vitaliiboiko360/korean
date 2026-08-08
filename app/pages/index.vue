@@ -3,6 +3,7 @@ import { useQuasar } from 'quasar';
 import type { QBtnProps, QNotifyOptions } from 'quasar';
 import Introduction from '~/components/hangeul_content_blocks/01_Introduction.vue';
 import BasicVowels from '~/components/hangeul_content_blocks/02_BasicVowels.vue';
+import BasicConsonants from '~/components/hangeul_content_blocks/03_BasicConsonants.vue';
 
 const { dialog, bottomSheet, loading, loadingBar, notify, dark, screen } =
   useQuasar();
@@ -146,6 +147,7 @@ const hangeul = {
   <q-page class="q-pl-lg">
     <Introduction />
     <BasicVowels />
+    <BasicConsonants />
   </q-page>
 </template>
 
