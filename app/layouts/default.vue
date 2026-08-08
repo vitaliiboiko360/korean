@@ -60,6 +60,6 @@ function toggleLeftDrawer() {
 
 <style module>
 .pageContainer {
-  width: 800px;
+  max-width: 800px;
 }
 </style>
