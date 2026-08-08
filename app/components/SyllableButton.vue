@@ -16,13 +16,13 @@ const emit = defineEmits(['updateSyllable']);
 
 <style module>
 .qItemSyllable {
-  width: 5rem;
-  height: 4.8rem;
+  width: 4rem;
+  height: 3.8rem;
   border-color: #d9d9d9;
   border-style: solid;
-  border-radius: 8px;
+  border-radius: 10px;
   border-width: 1px;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   user-select: none;
   margin: 0.5rem;
 }

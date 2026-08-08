@@ -8,7 +8,7 @@ const { letter, syllable, onUpdateSyllable } = defineProps([
 
 <template>
   <div :class="$style.containerDiv">
-    <Syllable @updateSyllable="onUpdateSyllable" :syllable="syllable" />
+    <SyllableButton @updateSyllable="onUpdateSyllable" :syllable="syllable" />
     <Letter @updateSyllable="onUpdateSyllable" :letter="letter" />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup>
-const { syllable } = defineProps(['syllable']);
+const { letter } = defineProps(['letter']);
 const emit = defineEmits(['updateSyllable']);
 </script>
 
@@ -8,21 +8,21 @@ const emit = defineEmits(['updateSyllable']);
     v-ripple
     clickable
     @click="emit('updateSyllable')"
-    :class="$style.qItemSyllable"
+    :class="$style.qItemLetter"
   >
-    <q-item-section :class="$style.qItemSection">{{ syllable }}</q-item-section>
+    <q-item-section :class="$style.qItemSection">{{ letter }}</q-item-section>
   </q-item>
 </template>
 
 <style module>
-.qItemSyllable {
-  width: 5rem;
-  height: 4.8rem;
-  border-color: #d9d9d9;
+.qItemLetter {
+  width: 3.7rem;
+  height: 3.5rem;
+  border-color: #e1e1e2;
   border-style: solid;
-  border-radius: 8px;
+  border-radius: 10px;
   border-width: 1px;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   user-select: none;
   margin: 0.5rem;
 }

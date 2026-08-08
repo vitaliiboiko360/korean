@@ -12,26 +12,48 @@
     <p>
       The simplest syllable could be formed of two letters. As the vowel letters
       "ㅏ", "ㅓ", "ㅣ", "ㅗ", "ㅜ", "ㅡ" could not form a complete syllable just
-      by a single vowel letter, they have to be paired with the consonant letter
-      "ㅇ".
+      by its single vowel letter, they have to be at least paired with the
+      consonant letter "ㅇ".
     </p>
-    <blockquote>
-      The Korean letter "ㅇ" (called
-      <span style="font-style: italic">ieung</span>), it has two different
-      pronunciations depending on where it sits in a syllable block: it is
-      silent at the start of a block (as it is in the following examples), and
-      it sounds like "ng" at the bottom.
-      <p>
-        When you add letter "ㅇ" before a vowel it remains silent and acts as a
-        consonant placeholder for the vowel sound.
-      </p>
-    </blockquote>
+    <QExpansionItem
+      switch-toggle-side
+      :class="$style.qExpansionItemLetterIeung"
+    >
+      <template v-slot:header>
+        <div
+          style="display: flex; flex-direction: column; justify-content: center"
+        >
+          <p style="margin-bottom: 0">
+            The letter "ㅇ" <span style="font-style: italic">ieung</span>
+          </p>
+        </div>
+      </template>
+      <blockquote
+        style="
+          border-left: 2px solid #ddd;
+          background-color: #f6f7f9;
+          padding: 5px 5px 5px 15px;
+        "
+      >
+        <p style="margin-bottom: 0">
+          The Korean letter "ㅇ" (called
+          <span style="font-style: italic">ieung</span>), it has two different
+          pronunciations depending on where it sits in a syllable block: it is
+          silent at the start of a block (as it is in the following examples),
+          and it sounds like "ng" at the bottom.
+        </p>
+        <p style="margin-bottom: 0">
+          When you add letter "ㅇ" before a vowel it remains silent and acts as
+          a consonant placeholder for the vowel sound.
+        </p>
+      </blockquote>
+    </QExpansionItem>
     <p>
       For example syllable with two letters: the vowel letter "ㅓ" and the
-      consonant letter "ㅇ". The letter "ㅓ" is vertical and could fill up the
-      height and the letter "ㅇ" is written in prolonged shape to reflect that
-      placement as well. So the syllable is formed by placing the two letters
-      from left to right to fit the box.
+      consonant letter "ㅇ". The letter "ㅓ" is vertical and whould fill up the
+      height and the letter "ㅇ" could be written in a similar prolonged shape
+      to reflect that placement as well. So the syllable is formed by placing
+      the two letters from left to right to fit the box.
     </p>
     <div :class="$style.syllableBoxOuter">
       <div :class="$style.syllableBoxInner">
@@ -48,8 +70,8 @@
     </div>
     <p>&nbsp;</p>
     <p>
-      A syllable could be formed with the horizontally long vowel "ㅜ". The
-      letter are placed one on top and the other at the bottom to fit the
+      To form a syllable with the horizontally long vowel, like for example
+      "ㅜ". One letter is placed on top and the other at the bottom to fit the
       syllable box.
     </p>
     <div :class="$style.syllableBoxOuter">
@@ -133,5 +155,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.qExpansionItemLetterIeung {
+  margin-bottom: 1rem;
+  :global(.q-item__section--side > .q-icon) {
+    transform: rotate(-90deg);
+  }
+  :global(.q-expansion-item__toggle-icon--rotated) {
+    transform: rotate(0deg) !important;
+  }
+  :global(.q-item__section--avatar) {
+    min-width: auto;
+  }
 }
 </style>
