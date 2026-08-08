@@ -2,8 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['nuxt-quasar-ui'],
+  modules: ['nuxt-quasar-ui', '@vue-player/nuxt'],
   css: ['assets/app.scss'],
+  vite: {
+    assetsInclude: ['**/*.mp4'],
+  },
   quasar: {
     plugins: [
       'BottomSheet',
