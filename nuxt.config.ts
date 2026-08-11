@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['nuxt-quasar-ui', '@vue-player/nuxt'],
-  css: ['assets/app.scss'],
+  css: ['assets/app.scss', 'assets/custom.css'],
   vite: {
     assetsInclude: ['**/*.mp4'],
   },
