@@ -2,6 +2,7 @@
 import { ref, h } from 'vue';
 
 import hangeul from '~/assets/hangeul.json';
+import CommonVowelPairs from '../CommonVowelPairs.vue';
 
 const letterRef = ref('ㄱ');
 
@@ -24,16 +25,31 @@ function renderSyllable(letter) {
 <template>
   <div>
     <p class="text-h6 q-pt-md">Basic Consonants</p>
-    <p>The letter "giyeok"</p>
+    <p class="text-h6">giyeok</p>
+    <SyllableBlockSmall :syllable="`ㄱ`" />
     <p>
       Pronunciation is similar to English sound
       <HighlightedTextSpan text="g" /> or <HighlightedTextSpan text="k" /> but
       neither exactly of those, rather it has its own sound.
     </p>
-    <SyllableBlockSmall :syllable="`ㄱ`" />
-    <p>Position of your tounge when pronounce this sound</p>
+    <p>Position your tounge to pronounce giyeok sound</p>
     <Video videoSrc="/hangeul_basic_consonants/giyeok.mp4" />
-    <!-- <video src="~/assets/hangeul_basic_consonants/giyeok.mp4" controls /> -->
+    <p>&nbsp;</p>
+    <p>Pair giyeok consonant with common vowels.</p>
+    <ClientOnly>
+      <CommonVowelPairs :letter="`ㄱ`" />
+    </ClientOnly>
+    <p></p>
+    <p class="text-h6">nieun</p>
+    <SyllableBlockSmall :syllable="`ㄴ`" />
+    <p>
+      Similar to English sound
+      <HighlightedTextSpan text="n" />
+    </p>
+    <p>Pair nieun consonant with vowels.</p>
+    <ClientOnly>
+      <CommonVowelPairs :letter="`ㄴ`" />
+    </ClientOnly>
   </div>
 </template>
 
