@@ -43,11 +43,14 @@ onMounted(() => {
 
 <template>
   <div ref="outerDivRef" :class="$style.outerDiv">
-    <SyllableBlockSmall
+    <div
+      v-ripple
       v-for="(syllable, index) in commonVowelSyllable[letter].vowelPairs"
       :key="index"
-      :syllable="syllable"
-    />
+      :class="$style.divRipple"
+    >
+      <SyllableBlockSmall :syllable="syllable" />
+    </div>
   </div>
 </template>
 
@@ -56,5 +59,10 @@ onMounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  row-gap: 1rem;
+}
+
+.divRipple {
+  position: relative;
 }
 </style>

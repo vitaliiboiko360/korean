@@ -36,7 +36,6 @@ const { syllable } = defineProps(['syllable']);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 .syllableBoxInner {
   display: flex;
