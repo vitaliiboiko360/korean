@@ -1,5 +1,10 @@
 {
-  "ㄱ": ["그", "고", "구", "기", "거", "가"],
+  "ㄱ": {
+    "characterName": "giyeok",
+    "vowelPairs": ["가", "갸", "거", "겨", "고", "교", "구", "규", "그", "기"],
+    "audioFilename": "giyeok_with_vowels.mp3",
+    "audioPoints": [0, 1.48, 3.2, 4.8, 6.5, 8.2, 9.8, 11.4, 13.25, 14.9]
+  },
   "ㄴ": {
     "characterName": "nieun",
     "vowelPairs": ["나", "냐", "너", "녀", "노", "뇨", "누", "뉴", "느", "니"],
