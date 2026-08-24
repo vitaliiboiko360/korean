@@ -8,7 +8,7 @@
   "ㄴ": {
     "characterName": "nieun",
     "vowelPairs": ["나", "냐", "너", "녀", "노", "뇨", "누", "뉴", "느", "니"],
-    "audioFilename": "nieun_vowels.mp3",
+    "audioFilename": "nieun_with_vowels.mp3",
     "audioPoints": [0, 1.35, 2.79, 4.07, 5.25, 6.48, 7.62, 8.9, 10.25, 11.5]
   },
   "ㄷ": [],
