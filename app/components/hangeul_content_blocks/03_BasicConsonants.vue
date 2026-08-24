@@ -1,25 +1,5 @@
 <script setup>
-import { ref, h } from 'vue';
-
-import hangeul from '~/assets/hangeul.json';
 import CommonVowelPairs from '../CommonVowelPairs.vue';
-
-const letterRef = ref('ㄱ');
-
-function updateSyllable(newSyllable) {
-  letterRef.value = newSyllable;
-}
-
-function renderSyllable(letter) {
-  return h(
-    SyllableButton,
-    {
-      onUpdateSyllable: () => updateSyllable(letter),
-      syllable: letter,
-    },
-    () => SyllableButton,
-  );
-}
 </script>
 
 <template>
