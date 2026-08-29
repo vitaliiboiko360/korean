@@ -17,7 +17,7 @@ import CommonVowelPairs from '../CommonVowelPairs.vue';
     <p>&nbsp;</p>
     <p>Pair giyeok consonant with common vowels.</p>
     <ClientOnly>
-      <CommonVowelPairs :letter="`ㄱ`" />
+      <CommonVowelPairsAudio :letter="`ㄱ`" />
     </ClientOnly>
     <p></p>
     <p class="text-h6">nieun</p>

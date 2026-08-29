@@ -1,6 +1,10 @@
 <script setup>
 import { toRef } from 'vue';
-const { letter: letterProp = 'ㄱ' } = defineProps(['letter']);
+const { letter: letterProp = 'ㄱ', currentPlayingIndex } = defineProps([
+  'letter',
+  'currentPlayingIndex',
+]);
+const emit = defineEmits(['clickedIndex']);
 
 const outerDivRef = useTemplateRef('outerDivRef');
 
@@ -46,8 +50,12 @@ onMounted(() => {
     <div
       v-ripple
       v-for="(syllable, index) in commonVowelSyllable[letter].vowelPairs"
+      @click="emit('clickedIndex', index)"
       :key="index"
-      :class="$style.divRipple"
+      :class="[
+        $style.divRipple,
+        { [$style.activePlayingIndex]: index == currentPlayingIndex },
+      ]"
     >
       <SyllableBlockSmall :syllable="syllable" />
     </div>
@@ -64,5 +72,11 @@ onMounted(() => {
 
 .divRipple {
   position: relative;
+  box-sizing: border-box;
+  border: 2px dotted transparent;
+}
+
+.activePlayingIndex {
+  border: 2px dotted rgb(131, 131, 149);
 }
 </style>
