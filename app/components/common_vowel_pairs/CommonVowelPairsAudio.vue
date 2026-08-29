@@ -24,7 +24,7 @@ onMounted(() => {
 const timeUpdateEventListener = ref();
 
 const onClickedIndex = (index, onComplete) => {
-  if (isPlaying.value) {
+  if (isPlaying.value == false) {
     audioTemplateRef.value.pause();
     if (timeUpdateEventListener.value) {
       audioTemplateRef.value.removeEventListener(
@@ -32,6 +32,7 @@ const onClickedIndex = (index, onComplete) => {
         timeUpdateEventListener.value,
       );
     }
+    return;
   }
   let stopTime;
   if (index == letterInfo.audioPoints.length - 1) {
@@ -177,7 +178,6 @@ watch([isPlaying], () => {
     }
     let onComplete;
     onComplete = async () => {
-      historyIndices.value.push(currentIndex.value);
       if (isHistoryEnded()) {
         historyIndices.value = [];
         if (isRepeat.value == false) {
@@ -193,15 +193,6 @@ watch([isPlaying], () => {
     };
     onClickedIndex(currentIndex.value, onComplete);
   }
-  // else {
-  //   audioTemplateRef.value.pause();
-  //   if (timeUpdateEventListener.value) {
-  //     audioTemplateRef.value.removeEventListener(
-  //       'timeupdate',
-  //       timeUpdateEventListener.value,
-  //     );
-  //   }
-  // }
 });
 </script>
 
