@@ -21,6 +21,7 @@ onMounted(() => {
 });
 
 const timeUpdateEventListener = ref();
+
 const onClickedIndex = (index, onComplete) => {
   if (isPlaying.value) {
     audioTemplateRef.value.pause();
@@ -107,9 +108,12 @@ watch([isPlaying], () => {
     let onComplete;
     onComplete = () => {
       historyIndices.value.push(currentIndex.value);
-      if (historyIndices.value.length == audioPointsLength) {
+      if (historyIndices.value.length >= audioPointsLength) {
         historyIndices.value = [];
-        if (isRepeat.value == false) return;
+        if (isRepeat.value == false) {
+          isPlaying.value = false;
+          return;
+        }
       }
       if (isShuffle.value) {
         setCurrentIndexRandomIndex();
