@@ -1,5 +1,6 @@
 <script setup>
 import { toRef } from 'vue';
+import { shuffle as _shuffle } from 'lodash-es';
 const { letter: letterProp = 'ㄱ', currentPlayingIndex } = defineProps([
   'letter',
   'currentPlayingIndex',
@@ -47,18 +48,20 @@ onMounted(() => {
 
 <template>
   <div ref="outerDivRef" :class="$style.outerDiv">
-    <div
-      v-ripple
-      v-for="(syllable, index) in commonVowelSyllable[letter].vowelPairs"
-      @click="emit('clickedIndex', index)"
-      :key="index"
-      :class="[
-        $style.divRipple,
-        { [$style.activePlayingIndex]: index == currentPlayingIndex },
-      ]"
-    >
-      <SyllableBlockSmall :syllable="syllable" />
-    </div>
+    <TransitionGroup>
+      <div
+        v-ripple
+        v-for="(syllable, index) in commonVowelSyllable[letter].vowelPairs"
+        @click="emit('clickedIndex', index)"
+        :key="syllable"
+        :class="[
+          $style.divRipple,
+          { [$style.activePlayingIndex]: index == currentPlayingIndex },
+        ]"
+      >
+        <SyllableBlockSmall :syllable="syllable" />
+      </div>
+    </TransitionGroup>
   </div>
 </template>
 

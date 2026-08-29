@@ -39,7 +39,10 @@ const onClickedIndex = (index, onComplete) => {
     stopTime = letterInfo.audioPoints[index + 1];
   }
   timeUpdateEventListener.value = (event) => {
-    if (audioTemplateRef.value.currentTime >= stopTime) {
+    if (
+      audioTemplateRef.value &&
+      audioTemplateRef.value.currentTime >= stopTime
+    ) {
       audioTemplateRef.value.pause();
       currentPlayingIndex.value = -1;
       if (timeUpdateEventListener.value) {
@@ -102,13 +105,26 @@ function setCurrentIndexNextSequenceIndex() {
     }
   }
 }
+function isHistoryEnded() {
+  if (isShuffle.value) {
+    for (let i = 0; i < audioPointsLength; i++) {
+      if (historyIndices.value.includes(i)) {
+        continue;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+  return currentIndex.value >= audioPointsLength - 1;
+}
 
 watch([isPlaying], () => {
   if (isPlaying.value) {
     let onComplete;
     onComplete = () => {
       historyIndices.value.push(currentIndex.value);
-      if (historyIndices.value.length >= audioPointsLength) {
+      if (isHistoryEnded()) {
         historyIndices.value = [];
         if (isRepeat.value == false) {
           isPlaying.value = false;
@@ -143,6 +159,10 @@ watch([isPlaying], () => {
       v-model:isRepeat="isRepeat"
       :class="$style.playbackControls"
     />
+    <CommonVowelPairsAudioControlsSecond
+      @reorder="() => {}"
+      :class="$style.playbackControls"
+    />
     <audio ref="audioTemplateRef" :src="audioSrc" preload="metadata"></audio>
     <CommonVowelPairs
       @clickedIndex="onClickedIndex"
@@ -158,6 +178,9 @@ watch([isPlaying], () => {
   flex-direction: column;
 }
 .playbackControls {
+  margin-bottom: 0.5rem;
+}
+.playbackControlsSecond {
   margin-bottom: 1rem;
 }
 </style>

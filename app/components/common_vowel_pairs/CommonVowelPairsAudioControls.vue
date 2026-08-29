@@ -5,6 +5,28 @@ const isShuffle = defineModel('isShuffle');
 const isRepeat = defineModel('isRepeat');
 const isPlaying = defineModel('isPlaying');
 
+const playAudioButtonInfo = {
+  labelIsPlaying: 'Playing...',
+  labelNotPlaying: 'Play Audio',
+  iconIsPlaying:
+    'M200-312v-336l240 168-240 168Zm320-8v-320h80v320h-80Zm160 0v-320h80v320h-80Z|0 -960 960 960',
+  iconNotPlaying: 'play_arrow',
+};
+
+const labelPlayAudio = computed(() => {
+  if (isPlaying.value) {
+    return playAudioButtonInfo.labelIsPlaying;
+  }
+  return playAudioButtonInfo.labelNotPlaying;
+});
+
+const iconPlayAudio = computed(() => {
+  if (isPlaying.value) {
+    return playAudioButtonInfo.iconIsPlaying;
+  }
+  return playAudioButtonInfo.iconNotPlaying;
+});
+
 onMounted(() => {
   //   console.log(prop);
 });
@@ -16,8 +38,8 @@ onMounted(() => {
       <QBtn
         @click="() => (isPlaying = !isPlaying)"
         push
-        label="Play Audio"
-        icon="play_arrow"
+        :label="labelPlayAudio"
+        :icon="iconPlayAudio"
       />
       <QBtn
         @click="() => (isShuffle = !isShuffle)"
