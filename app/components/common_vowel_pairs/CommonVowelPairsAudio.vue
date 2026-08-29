@@ -6,7 +6,7 @@ const audioTemplateRef = useTemplateRef('audioTemplateRef');
 
 const isPlaying = defineModel('isPlaying', { default: false });
 const isShuffle = defineModel('isShuffle', { default: false });
-const isRepeat = defineModel('isRepeat', { default: false });
+const isLoop = defineModel('isLoop', { default: false });
 const pauseBetween = defineModel('pauseBetween', { default: 0 });
 
 import commonVowelSyllable from '~/assets/hangeul_common_vowel_syllables.json';
@@ -180,7 +180,7 @@ watch([isPlaying], () => {
     onComplete = async () => {
       if (isHistoryEnded()) {
         historyIndices.value = [];
-        if (isRepeat.value == false) {
+        if (isLoop.value == false) {
           isPlaying.value = false;
           return;
         }
@@ -201,7 +201,7 @@ watch([isPlaying], () => {
     <CommonVowelPairsAudioControls
       v-model:isPlaying="isPlaying"
       v-model:isShuffle="isShuffle"
-      v-model:isRepeat="isRepeat"
+      v-model:isLoop="isLoop"
       :class="$style.playbackControls"
     />
     <CommonVowelPairsAudioControlsSecond
