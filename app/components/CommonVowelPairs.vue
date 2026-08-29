@@ -77,9 +77,11 @@ onMounted(() => {
   position: relative;
   box-sizing: border-box;
   border: 2px dotted transparent;
+  border-radius: 5px;
 }
 
 .activePlayingIndex {
-  border: 2px dotted rgb(131, 131, 149);
+  border: 2px dotted rgb(154, 154, 222);
+  border-radius: 5px;
 }
 </style>
