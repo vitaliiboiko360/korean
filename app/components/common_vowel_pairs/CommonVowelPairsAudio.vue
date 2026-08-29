@@ -169,14 +169,14 @@ function setNextCurrentIndex() {
   }
 }
 
-watch([isPlaying], async () => {
+watch([isPlaying], () => {
   if (isPlaying.value) {
     if (isHistoryEnded()) {
       historyIndices.value = [];
       setNextCurrentIndex();
     }
     let onComplete;
-    onComplete = () => {
+    onComplete = async () => {
       historyIndices.value.push(currentIndex.value);
       if (isHistoryEnded()) {
         historyIndices.value = [];
@@ -186,7 +186,9 @@ watch([isPlaying], async () => {
         }
       }
       setNextCurrentIndex();
-      await new Promise(resolve => setTimeout(resolve, pauseBetween.value * 1000));
+      await new Promise((resolve) =>
+        setTimeout(resolve, pauseBetween.value * 1000),
+      );
       onClickedIndex(currentIndex.value, onComplete);
     };
     onClickedIndex(currentIndex.value, onComplete);
