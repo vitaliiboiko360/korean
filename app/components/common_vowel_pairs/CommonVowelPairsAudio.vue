@@ -89,7 +89,6 @@ function setCurrentIndexRandomIndex() {
   }
 }
 function setCurrentIndexNextSequenceIndex() {
-  currentIndex.value = (currentIndex.value + 1) % audioPointsLength;
   const maxNumberOfIteration = audioPointsLength;
   let iterationNum = 0;
   while (true) {
@@ -138,6 +137,7 @@ watch([isPlaying], () => {
       v-model:isPlaying="isPlaying"
       v-model:isShuffle="isShuffle"
       v-model:isRepeat="isRepeat"
+      :class="$style.playbackControls"
     />
     <audio ref="audioTemplateRef" :src="audioSrc" preload="metadata"></audio>
     <CommonVowelPairs
@@ -152,5 +152,8 @@ watch([isPlaying], () => {
 .outerDiv {
   display: flex;
   flex-direction: column;
+}
+.playbackControls {
+  margin-bottom: 1rem;
 }
 </style>
