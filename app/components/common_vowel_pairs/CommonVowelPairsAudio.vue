@@ -7,6 +7,7 @@ const audioTemplateRef = useTemplateRef('audioTemplateRef');
 const isPlaying = defineModel('isPlaying', { default: false });
 const isShuffle = defineModel('isShuffle', { default: false });
 const isRepeat = defineModel('isRepeat', { default: false });
+const pauseBetween = defineModel('pauseBetween', { default: 0 });
 
 import commonVowelSyllable from '~/assets/hangeul_common_vowel_syllables.json';
 
@@ -70,6 +71,45 @@ const onClickedIndex = (index, onComplete) => {
   audioTemplateRef.value.play();
 };
 
+const onClickedIndexManual = (index) => {
+  audioTemplateRef.value.pause();
+  if (timeUpdateEventListener.value) {
+    audioTemplateRef.value.removeEventListener(
+      'timeupdate',
+      timeUpdateEventListener.value,
+    );
+  }
+  let stopTime;
+  if (index == letterInfo.audioPoints.length - 1) {
+    stopTime = audioTemplateRef.value.duration;
+  } else {
+    stopTime = letterInfo.audioPoints[index + 1];
+  }
+  timeUpdateEventListener.value = (event) => {
+    if (
+      audioTemplateRef.value &&
+      audioTemplateRef.value.currentTime >= stopTime
+    ) {
+      audioTemplateRef.value.pause();
+      currentPlayingIndex.value = -1;
+      if (timeUpdateEventListener.value) {
+        audioTemplateRef.value.removeEventListener(
+          'timeupdate',
+          timeUpdateEventListener.value,
+        );
+      }
+    }
+  };
+  audioTemplateRef.value.addEventListener(
+    'timeupdate',
+    timeUpdateEventListener.value,
+  );
+  audioTemplateRef.value.pause();
+  audioTemplateRef.value.currentTime = letterInfo.audioPoints[index];
+  currentPlayingIndex.value = index;
+  audioTemplateRef.value.play();
+};
+
 const currentIndex = ref(0);
 const historyIndices = ref([]);
 
@@ -116,11 +156,25 @@ function isHistoryEnded() {
     }
     return true;
   }
-  return currentIndex.value >= audioPointsLength - 1;
+  return (
+    currentIndex.value >= audioPointsLength - 1 ||
+    historyIndices.value.length >= audioPointsLength
+  );
+}
+function setNextCurrentIndex() {
+  if (isShuffle.value) {
+    setCurrentIndexRandomIndex();
+  } else {
+    setCurrentIndexNextSequenceIndex();
+  }
 }
 
-watch([isPlaying], () => {
+watch([isPlaying], async () => {
   if (isPlaying.value) {
+    if (isHistoryEnded()) {
+      historyIndices.value = [];
+      setNextCurrentIndex();
+    }
     let onComplete;
     onComplete = () => {
       historyIndices.value.push(currentIndex.value);
@@ -131,23 +185,21 @@ watch([isPlaying], () => {
           return;
         }
       }
-      if (isShuffle.value) {
-        setCurrentIndexRandomIndex();
-      } else {
-        setCurrentIndexNextSequenceIndex();
-      }
+      setNextCurrentIndex();
+      await new Promise(resolve => setTimeout(resolve, pauseBetween.value * 1000));
       onClickedIndex(currentIndex.value, onComplete);
     };
     onClickedIndex(currentIndex.value, onComplete);
-  } else {
-    audioTemplateRef.value.pause();
-    if (timeUpdateEventListener.value) {
-      audioTemplateRef.value.removeEventListener(
-        'timeupdate',
-        timeUpdateEventListener.value,
-      );
-    }
   }
+  // else {
+  //   audioTemplateRef.value.pause();
+  //   if (timeUpdateEventListener.value) {
+  //     audioTemplateRef.value.removeEventListener(
+  //       'timeupdate',
+  //       timeUpdateEventListener.value,
+  //     );
+  //   }
+  // }
 });
 </script>
 
@@ -160,12 +212,13 @@ watch([isPlaying], () => {
       :class="$style.playbackControls"
     />
     <CommonVowelPairsAudioControlsSecond
+      v-model:pauseBetween="pauseBetween"
       @reorder="() => {}"
       :class="$style.playbackControls"
     />
     <audio ref="audioTemplateRef" :src="audioSrc" preload="metadata"></audio>
     <CommonVowelPairs
-      @clickedIndex="onClickedIndex"
+      @clickedIndex="onClickedIndexManual"
       :letter
       :currentPlayingIndex
     />

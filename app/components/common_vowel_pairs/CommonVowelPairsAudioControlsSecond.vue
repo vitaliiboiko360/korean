@@ -1,7 +1,7 @@
 <script setup>
 const { prop } = defineProps(['prop']);
 
-const pauseBetween = defineModel('pauseBetween', { default: 0 });
+const pauseBetween = defineModel('pauseBetween');
 const emit = defineEmits(['reorder']);
 
 const playAudioButtonInfo = {
